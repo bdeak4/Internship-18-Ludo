@@ -1,12 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./components/App";
+import GameProvider from "./providers/game";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GameProvider>
+      <App />
+    </GameProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
