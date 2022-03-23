@@ -1,17 +1,19 @@
 import React, { useContext } from "react";
+import { players } from "../../constants/players";
 import { GameContext } from "../../providers/game";
+import PlayerTablePart from "./PlayerTablePart";
 import { TableElement } from "./styled";
+import TableCenter from "./TableCenter";
 
 const Table = () => {
   const { game } = useContext(GameContext);
 
   return (
     <TableElement>
-      <div className="player-home ph0">ph0</div>
-      <div className="player-home ph1">ph1</div>
-      <div className="player-home ph2">ph2</div>
-      <div className="player-home ph3">ph3</div>
-      <div className="center">center</div>
+      {Object.keys(players).map((player) => {
+        return <PlayerTablePart player={player} key={player} />;
+      })}
+      <TableCenter />
     </TableElement>
   );
 };
