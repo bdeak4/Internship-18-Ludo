@@ -1,20 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { players } from "../../constants/players";
-import { GameContext } from "../../providers/game";
 import PlayerTablePart from "./PlayerTablePart";
-import { TableElement } from "./styled";
+import { TableWrapper } from "./styled";
 import TableCenter from "./TableCenter";
 
 const Table = () => {
-  const { game } = useContext(GameContext);
-
   return (
-    <TableElement>
+    <TableWrapper>
       {Object.keys(players).map((player) => {
         return <PlayerTablePart player={player} key={player} />;
       })}
       <TableCenter />
-    </TableElement>
+    </TableWrapper>
   );
 };
 
