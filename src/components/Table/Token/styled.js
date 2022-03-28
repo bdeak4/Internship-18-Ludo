@@ -9,4 +9,5 @@ export const TokenButton = styled.button`
   border-radius: 100%;
   border: 0;
   cursor: ${({ clickable }) => (clickable ? "pointer" : "not-allowed")};
+  animation: ${({ clickable }) => clickable && "pulse 1s ease-out infinite"};
 `;
