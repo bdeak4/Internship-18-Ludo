@@ -15,7 +15,7 @@ const Home = ({ player }) => {
               <Token
                 player={player}
                 onClick={() => incrementTokenPosition(setPlayerData, i, 1)}
-                disabled={playerData.disabled}
+                clickable={playerData.active}
               />
             )}
           </TokenWrapper>

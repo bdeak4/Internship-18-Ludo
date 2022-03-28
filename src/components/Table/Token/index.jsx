@@ -1,11 +1,12 @@
 import { TokenButton } from "./styled";
 
-const Token = ({ player, onClick, disabled }) => {
+const Token = ({ player, onClick, clickable }) => {
   return (
     <TokenButton
       player={player}
       onClick={onClick}
-      disabled={disabled}
+      clickable={clickable}
+      disabled={!clickable}
     ></TokenButton>
   );
 };

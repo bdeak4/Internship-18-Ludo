@@ -2,23 +2,24 @@ import { useGame } from "providers/game/hooks";
 import { getActivePlayers } from "utils/game";
 import Form from "components/Form";
 import Table from "components/Table";
+import { random } from "../../utils/common";
+import { updatePlayer } from "../../utils/player";
 
 const App = () => {
   const [game, setGame] = useGame();
 
   const startGame = (playerNames) => {
-    Object.keys(playerNames).forEach((player) => {
-      setGame((prev) => ({
-        ...prev,
-        players: {
-          ...prev.players,
-          [player]: {
-            ...prev.players[player],
-            name: playerNames[player],
-            disabled: false,
-          },
-        },
-      }));
+    const players = Object.keys(playerNames);
+
+    players.forEach((player) => {
+      updatePlayer(setGame, player, {
+        name: playerNames[player],
+        disabled: false,
+      });
+    });
+
+    updatePlayer(setGame, random(players), {
+      active: true,
     });
   };
 

@@ -19,6 +19,19 @@ export const getPlayerColor = (player) => {
   }
 };
 
+export const updatePlayer = (setGame, player, updatedProperties) => {
+  setGame((prev) => ({
+    ...prev,
+    players: {
+      ...prev.players,
+      [player]: {
+        ...prev.players[player],
+        ...updatedProperties,
+      },
+    },
+  }));
+};
+
 export const incrementTokenPosition = (setPlayer, tokenIndex, increment) => {
   setPlayer((prev) => ({
     ...prev,
