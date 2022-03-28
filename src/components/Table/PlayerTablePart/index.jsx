@@ -1,14 +1,10 @@
-import { useContext } from "react";
 import { customStyles } from "./customStyles";
 import { Cells, PlayerTablePartWrapper } from "./styled";
-import { GameContext } from "../../../providers/game";
 import Cell from "./Cell";
 import Home from "./Home";
-import { isParkingCell, isSpawnCell } from "../../../util/cell";
+import { isParkingCell, isSpawnCell } from "../../../utils/cell";
 
 const PlayerTablePart = ({ player }) => {
-  const { game } = useContext(GameContext);
-
   return (
     <PlayerTablePartWrapper style={customStyles[player]}>
       <Cells>
