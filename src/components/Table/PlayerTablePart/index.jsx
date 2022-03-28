@@ -4,6 +4,7 @@ import { Cells, PlayerTablePartWrapper } from "./styled";
 import { GameContext } from "../../../providers/game";
 import Cell from "./Cell";
 import Home from "./Home";
+import { isParkingCell, isSpawnCell } from "../../../util/cell";
 
 const PlayerTablePart = ({ player }) => {
   const { game } = useContext(GameContext);
@@ -13,8 +14,8 @@ const PlayerTablePart = ({ player }) => {
       <Cells>
         {new Array(18).fill(0).map((_, i) => (
           <Cell
-            isParking={i >= 7 && i <= 11}
-            isSpawn={i === 13}
+            isParking={isParkingCell(i)}
+            isSpawn={isSpawnCell(i)}
             player={player}
             key={i}
           />
