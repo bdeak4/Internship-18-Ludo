@@ -1,8 +1,8 @@
-import { useGame } from "../../providers/game/hooks";
-import { getActivePlayers } from "../../utils/game";
-import { updatePlayerProperty } from "../../utils/player";
-import Form from "../Form";
-import Table from "../Table";
+import { useGame } from "providers/game/hooks";
+import { getActivePlayers } from "utils/game";
+import { updatePlayerProperty } from "utils/player";
+import Form from "components/Form";
+import Table from "components/Table";
 
 const App = () => {
   const [game, setGame] = useGame();

@@ -1,9 +1,18 @@
-import { HomeWrapper, PlayersWrapper } from "./styled";
+import { usePlayer } from "providers/game/hooks";
+import Token from "components/Table/Token";
+import { HomeWrapper, TokensWrapper, TokenWrapper } from "./styled";
 
 const Home = ({ player }) => {
+  const [playerData, setPlayerData] = usePlayer(player);
   return (
     <HomeWrapper player={player}>
-      <PlayersWrapper></PlayersWrapper>
+      <TokensWrapper>
+        {playerData.tokens.map((token, i) => (
+          <TokenWrapper player={player} key={i}>
+            {token.position === -1 && <Token player={player} />}
+          </TokenWrapper>
+        ))}
+      </TokensWrapper>
     </HomeWrapper>
   );
 };

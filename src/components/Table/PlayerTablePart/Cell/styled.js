@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { getPlayerColor } from "../../../../utils/player";
+import { getPlayerColor } from "utils/player";
 
 export const CellWrapper = styled.div`
   background-color: ${({ isBlank, player }) =>
@@ -7,4 +7,9 @@ export const CellWrapper = styled.div`
   width: 33.33333%;
   aspect-ratio: 1;
   border: 1px solid black;
+
+  button {
+    background-color: ${({ isBlank, player }) =>
+      isBlank ? getPlayerColor(player) : "#ffffff80"};
+  }
 `;

@@ -2,7 +2,7 @@ import { customStyles } from "./customStyles";
 import { Cells, PlayerTablePartWrapper } from "./styled";
 import Cell from "./Cell";
 import Home from "./Home";
-import { isParkingCell, isSpawnCell } from "../../../utils/cell";
+import { isParkingCell, isSpawnCell } from "utils/cell";
 
 const PlayerTablePart = ({ player }) => {
   return (

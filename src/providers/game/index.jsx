@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { initialGameState } from "../../constants/game";
+import { initialGameState } from "constants/game";
 
 export const GameContext = createContext(initialGameState);
 

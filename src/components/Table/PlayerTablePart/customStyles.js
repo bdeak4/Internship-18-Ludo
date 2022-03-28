@@ -1,4 +1,4 @@
-import { players } from "../../../constants/players";
+import { players } from "constants/players";
 
 export const customStyles = {
   [players.blue]: {

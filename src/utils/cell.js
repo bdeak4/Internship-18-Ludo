@@ -2,7 +2,7 @@ import {
   parkingEndRelativeIndex,
   parkingStartRelativeIndex,
   spawnRelativeIndex,
-} from "../constants/cell";
+} from "constants/cell";
 
 export const isSpawnCell = (relativeIndex) =>
   relativeIndex === spawnRelativeIndex;

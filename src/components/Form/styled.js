@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { getPlayerColor } from "../../utils/player";
+import { getPlayerColor } from "utils/player";
 
 export const PlayerForm = styled.form`
   min-height: 100vh;

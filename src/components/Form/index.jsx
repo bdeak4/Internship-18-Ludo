@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { players } from "../../constants/players";
-import { getPlayerColor } from "../../utils/player";
-import { capitalize } from "../../utils/text";
+import { players } from "constants/players";
+import { getPlayerColor } from "utils/player";
+import { capitalize } from "utils/text";
 import {
   PlayerForm,
   PlayerFormFooter,
@@ -39,7 +39,7 @@ const Form = ({ startGame }) => {
         <p>Enter only active player names</p>
       </PlayerFormHeading>
 
-      {Object.keys(players).map((player) => {
+      {Object.keys(players).map((player, i) => {
         return (
           <PlayerInput player={player} key={player}>
             <input
@@ -52,6 +52,7 @@ const Form = ({ startGame }) => {
                   [player]: e.target.value,
                 }))
               }
+              autoFocus={i === 0}
             />
           </PlayerInput>
         );
