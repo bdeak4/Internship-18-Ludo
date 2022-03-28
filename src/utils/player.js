@@ -18,3 +18,16 @@ export const getPlayerColor = (player) => {
       return "transparent";
   }
 };
+
+export const updatePlayerProperty = (setGame, player, property, value) => {
+  setGame((prev) => ({
+    ...prev,
+    players: {
+      ...prev.players,
+      [player]: {
+        ...prev.players[player],
+        [property]: value,
+      },
+    },
+  }));
+};
