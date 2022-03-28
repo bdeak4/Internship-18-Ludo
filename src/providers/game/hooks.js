@@ -15,7 +15,10 @@ export const usePlayer = (player) => {
       ...prev,
       players: {
         ...prev.players,
-        [player]: newPlayer instanceof Function ? newPlayer(prev) : newPlayer,
+        [player]:
+          newPlayer instanceof Function
+            ? newPlayer(prev.players[player])
+            : newPlayer,
       },
     }));
   };

@@ -1,6 +1,5 @@
 import { useGame } from "providers/game/hooks";
 import { getActivePlayers } from "utils/game";
-import { updatePlayerProperty } from "utils/player";
 import Form from "components/Form";
 import Table from "components/Table";
 
@@ -9,12 +8,25 @@ const App = () => {
 
   const startGame = (playerNames) => {
     Object.keys(playerNames).forEach((player) => {
-      updatePlayerProperty(setGame, player, "name", playerNames[player]);
+      setGame((prev) => ({
+        ...prev,
+        players: {
+          ...prev.players,
+          [player]: {
+            ...prev.players[player],
+            name: playerNames[player],
+            disabled: false,
+          },
+        },
+      }));
     });
   };
 
   return getActivePlayers(game).length ? (
-    <Table />
+    <>
+      <Table />
+      <pre>{JSON.stringify(game, null, 2)}</pre>
+    </>
   ) : (
     <Form startGame={startGame} />
   );

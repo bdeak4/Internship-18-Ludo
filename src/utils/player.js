@@ -19,15 +19,12 @@ export const getPlayerColor = (player) => {
   }
 };
 
-export const updatePlayerProperty = (setGame, player, property, value) => {
-  setGame((prev) => ({
+export const incrementTokenPosition = (setPlayer, tokenIndex, increment) => {
+  setPlayer((prev) => ({
     ...prev,
-    players: {
-      ...prev.players,
-      [player]: {
-        ...prev.players[player],
-        [property]: value,
-      },
-    },
+    tokens: prev.tokens.map((token, i) => ({
+      ...token,
+      position: token.position + (tokenIndex === i ? increment : 0),
+    })),
   }));
 };

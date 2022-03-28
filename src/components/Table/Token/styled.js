@@ -8,5 +8,5 @@ export const TokenButton = styled.button`
   background-color: ${({ player }) => getPlayerColor(player)};
   border-radius: 100%;
   border: 0;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;

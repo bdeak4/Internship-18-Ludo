@@ -8,7 +8,7 @@ export const players = Object.freeze({
 export const initialPlayerState = {
   name: "",
   score: 0,
-  disabled: false,
+  disabled: true,
   active: false,
   tokens: Array(4).fill({
     position: -1,

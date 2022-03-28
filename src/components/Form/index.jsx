@@ -24,6 +24,11 @@ const Form = ({ startGame }) => {
       return;
     }
 
+    if (names.length === 1) {
+      setError("Can't start game with only one player");
+      return;
+    }
+
     if (names.some((name, i) => names.indexOf(name) !== i)) {
       setError("Multiple players can't have same name");
       return;
