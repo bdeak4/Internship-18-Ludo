@@ -4,6 +4,7 @@ import Form from "components/Form";
 import Table from "components/Table";
 import { random } from "../../utils/common";
 import { updatePlayer } from "../../utils/player";
+import ScoreBoard from "components/ScoreBoard";
 
 const App = () => {
   const [game, setGame] = useGame();
@@ -26,6 +27,7 @@ const App = () => {
   return getActivePlayers(game).length ? (
     <>
       <Table />
+      <ScoreBoard />
       <pre>{JSON.stringify(game, null, 2)}</pre>
     </>
   ) : (
