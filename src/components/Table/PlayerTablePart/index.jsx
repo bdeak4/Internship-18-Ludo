@@ -13,6 +13,7 @@ const PlayerTablePart = ({ player }) => {
             isParking={isParkingCell(i)}
             isSpawn={isSpawnCell(i)}
             player={player}
+            index={i}
             key={i}
           />
         ))}

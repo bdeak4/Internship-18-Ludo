@@ -5,7 +5,8 @@ export const TokenButton = styled.button`
   width: 60%;
   height: 60%;
   margin: 20%;
-  background-color: ${({ player }) => getPlayerColor(player)};
+  background-color: ${({ player, hasMutedColor }) =>
+    !hasMutedColor ? getPlayerColor(player) : "#ffffff80"};
   border-radius: 100%;
   border: 0;
   cursor: ${({ clickable }) => (clickable ? "pointer" : "not-allowed")};
