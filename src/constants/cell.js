@@ -3,7 +3,7 @@ export const parkingStartRelativeIndex = 7;
 export const parkingEndRelativeIndex = 11;
 
 export const tokenPath = [
-  [0, 13],
+  [0, spawnRelativeIndex],
   [0, 14],
   [0, 15],
   [0, 16],
@@ -18,27 +18,27 @@ export const tokenPath = [
   [0, 1],
   [0, 0],
   [0, 6],
-  [0, 7],
+  [0, parkingStartRelativeIndex],
   [0, 8],
   [0, 9],
   [0, 10],
-  [0, 11],
+  [0, parkingEndRelativeIndex],
 ];
 
-function getForeignTablePartPath(index) {
+function getForeignTablePartPath(tablePartIndex) {
   return [
-    [index, 5],
-    [index, 4],
-    [index, 3],
-    [index, 2],
-    [index, 1],
-    [index, 0],
-    [index, 6],
-    [index, 12],
-    [index, 13],
-    [index, 14],
-    [index, 15],
-    [index, 16],
-    [index, 17],
+    [tablePartIndex, 5],
+    [tablePartIndex, 4],
+    [tablePartIndex, 3],
+    [tablePartIndex, 2],
+    [tablePartIndex, 1],
+    [tablePartIndex, 0],
+    [tablePartIndex, 6],
+    [tablePartIndex, 12],
+    [tablePartIndex, 13],
+    [tablePartIndex, 14],
+    [tablePartIndex, 15],
+    [tablePartIndex, 16],
+    [tablePartIndex, 17],
   ];
 }
