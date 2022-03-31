@@ -33,8 +33,17 @@ export const useActivePlayer = () => {
     if (!game.players[player].active) {
       continue;
     }
-
-    return [game.players[player], player];
+    return player;
   }
-  return [{}, ""];
+  return "";
+};
+
+export const useDice = () => {
+  const [game, setGame] = useGame();
+
+  const setDice = (newDice) => {
+    setGame((prev) => ({ ...prev, dice: newDice }));
+  };
+
+  return [game.dice, setDice];
 };
