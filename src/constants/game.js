@@ -1,5 +1,7 @@
 import { initialPlayerState, players } from "./players";
 
+export const initialDiceState = -1;
+
 export const initialGameState = {
   players: {
     [players.blue]: initialPlayerState,
@@ -7,4 +9,5 @@ export const initialGameState = {
     [players.green]: initialPlayerState,
     [players.yellow]: initialPlayerState,
   },
+  dice: initialDiceState,
 };

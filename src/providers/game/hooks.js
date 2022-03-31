@@ -8,7 +8,7 @@ export const useGame = () => {
 };
 
 export const usePlayer = (player) => {
-  const { game, setGame } = useContext(GameContext);
+  const [game, setGame] = useGame();
 
   const setPlayer = (newPlayer) => {
     setGame((prev) => ({
@@ -24,4 +24,17 @@ export const usePlayer = (player) => {
   };
 
   return [game.players[player], setPlayer];
+};
+
+export const useActivePlayer = () => {
+  const [game] = useGame();
+
+  for (let player in game.players) {
+    if (!game.players[player].active) {
+      continue;
+    }
+
+    return [game.players[player], player];
+  }
+  return [{}, ""];
 };

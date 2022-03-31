@@ -1,4 +1,5 @@
 import { players } from "constants/players";
+import DiceRoller from "../DiceRoller";
 import {
   PlayerTableCenter,
   TableCenterWrapper,
@@ -14,6 +15,7 @@ const TableCenter = () => {
         <PlayerTableCenter player={players.red} />
         <PlayerTableCenter player={players.blue} />
       </TableCenterRotated>
+      <DiceRoller />
     </TableCenterWrapper>
   );
 };

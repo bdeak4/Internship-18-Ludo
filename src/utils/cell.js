@@ -4,7 +4,7 @@ import {
   spawnRelativeIndex,
   tokenPath,
 } from "constants/cell";
-import { players } from "constants/players";
+import { players, tokenHomePosition } from "constants/players";
 
 export const isSpawnCell = (relativeIndex) =>
   relativeIndex === spawnRelativeIndex;
@@ -28,7 +28,7 @@ export const getPlayerTokenByCell = (game, tablePart, relativeIndex) => {
     const playerData = game.players[player];
 
     for (let [tokenIndex, token] of playerData.tokens.entries()) {
-      if (token.position === -1) {
+      if (token.position === tokenHomePosition) {
         continue;
       }
 

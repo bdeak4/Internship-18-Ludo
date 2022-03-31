@@ -5,12 +5,14 @@ export const players = Object.freeze({
   yellow: "yellow",
 });
 
+export const tokenHomePosition = -1;
+
 export const initialPlayerState = {
   name: "",
   score: 0,
   disabled: true,
   active: false,
   tokens: Array(4).fill({
-    position: -1,
+    position: tokenHomePosition,
   }),
 };
