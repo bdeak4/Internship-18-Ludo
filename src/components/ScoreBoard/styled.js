@@ -3,19 +3,37 @@ import { getPlayerColor } from "utils/player";
 
 export const ScoreBoardWrapper = styled.div`
   margin: 1em;
-  position: fixed;
-  top: 0;
-  right: 0;
+
+  @media screen and (max-width: 1200px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 8px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
 `;
 
 export const ScoreBoardPlayer = styled.div`
   aspect-ratio: 1;
-  width: 168px;
   background-color: ${({ player }) => getPlayerColor(player)};
   border: 2px solid black;
   padding: 1em;
-  margin-bottom: 8px;
   text-align: right;
+  margin-bottom: 8px;
+
+  width: calc(50% - 8px);
+
+  @media screen and (max-width: 1200px) {
+    margin-right: 8px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 168px;
+  }
 `;
 
 export const PlayerName = styled.div`
