@@ -1,4 +1,6 @@
+import { initialDiceState } from "constants/game";
 import { useContext } from "react";
+import { updatePlayer } from "utils/player";
 import { GameContext } from ".";
 
 export const useGame = () => {
@@ -46,4 +48,23 @@ export const useDice = () => {
   };
 
   return [game.dice, setDice];
+};
+
+export const useNextPlayer = () => {
+  const [game, setGame] = useGame();
+  const [, setDice] = useDice();
+
+  const nextPlayer = () => {
+    const playerKeys = Object.keys(game.players).filter((p) => !p.disabled);
+    const playerValues = Object.values(game.players).filter((p) => !p.disabled);
+    const activePlayerIndex = playerValues.findIndex((p) => p.active);
+    const nextPlayerIndex =
+      playerValues.length - 1 > activePlayerIndex ? activePlayerIndex + 1 : 0;
+
+    updatePlayer(setGame, playerKeys[activePlayerIndex], { active: false });
+    updatePlayer(setGame, playerKeys[nextPlayerIndex], { active: true });
+    setDice(initialDiceState);
+  };
+
+  return { nextPlayer };
 };
