@@ -1,3 +1,4 @@
+import { parkingStartAbsoluteIndex } from "constants/cell";
 import { players } from "constants/players";
 import { useGame } from "providers/game/hooks";
 import { PlayerName, ScoreBoardPlayer, ScoreBoardWrapper } from "./styled";
@@ -14,7 +15,9 @@ const ScoreBoard = () => {
       {playerList.map(({ playerColor, player }) => {
         const tokens = player.tokens;
         const tokensInHome = tokens.filter((t) => t.position === -1).length;
-        const finishedTokens = tokens.filter((t) => t.position > 50).length;
+        const finishedTokens = tokens.filter(
+          (t) => t.position >= parkingStartAbsoluteIndex
+        ).length;
 
         return (
           <ScoreBoardPlayer player={playerColor} key={player.name}>

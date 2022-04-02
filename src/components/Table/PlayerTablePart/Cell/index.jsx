@@ -1,4 +1,5 @@
 import Token from "components/Table/Token";
+import { parkingEndAbsoluteIndex } from "constants/cell";
 import { initialDiceState } from "constants/game";
 import {
   useDice,
@@ -14,13 +15,22 @@ const Cell = ({ player, isParking, isSpawn, index }) => {
   const [game] = useGame();
   const [token, tokenIndex] = getPlayerTokenByCell(game, player, index);
   const [playerData, setPlayerData] = usePlayer(token);
-  const [dice] = useDice();
+  const [dice, setDice] = useDice();
   const { nextPlayer } = useNextPlayer();
 
   const handleClick = () => {
     incrementTokenPosition(setPlayerData, tokenIndex, dice);
-    nextPlayer();
+
+    if (dice !== 6) {
+      nextPlayer();
+    } else {
+      setDice(initialDiceState);
+    }
   };
+
+  const outOfBounds =
+    token &&
+    playerData.tokens[tokenIndex].position + dice > parkingEndAbsoluteIndex;
 
   return (
     <CellWrapper player={player} isBlank={!isParking && !isSpawn}>
@@ -30,9 +40,7 @@ const Cell = ({ player, isParking, isSpawn, index }) => {
           hasMutedColor={(isParking || isSpawn) && token === player}
           onClick={handleClick}
           clickable={
-            playerData.active &&
-            dice !== initialDiceState &&
-            playerData.tokens[tokenIndex].position + dice <= 55
+            playerData.active && dice !== initialDiceState && !outOfBounds
           }
         />
       )}

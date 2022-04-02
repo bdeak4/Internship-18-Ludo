@@ -1,6 +1,8 @@
 export const spawnRelativeIndex = 13;
 export const parkingStartRelativeIndex = 7;
 export const parkingEndRelativeIndex = 11;
+export const parkingStartAbsoluteIndex = 51;
+export const parkingEndAbsoluteIndex = 55;
 
 export const tokenPath = [
   [0, spawnRelativeIndex],
