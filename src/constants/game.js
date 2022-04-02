@@ -1,6 +1,7 @@
 import { initialPlayerState, players } from "./players";
 
 export const initialDiceState = -1;
+export const initialMessageState = "";
 
 export const initialGameState = {
   players: {
@@ -10,4 +11,5 @@ export const initialGameState = {
     [players.yellow]: initialPlayerState,
   },
   dice: initialDiceState,
+  message: initialMessageState,
 };

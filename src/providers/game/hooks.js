@@ -1,4 +1,4 @@
-import { initialDiceState } from "constants/game";
+import { initialDiceState, initialMessageState } from "constants/game";
 import { useContext } from "react";
 import { updatePlayer } from "utils/player";
 import { GameContext } from ".";
@@ -53,6 +53,7 @@ export const useDice = () => {
 export const useNextPlayer = () => {
   const [game, setGame] = useGame();
   const [, setDice] = useDice();
+  const [, setMessage] = useMessage();
 
   const nextPlayer = () => {
     const playerKeys = Object.keys(game.players).filter((p) => !p.disabled);
@@ -64,7 +65,18 @@ export const useNextPlayer = () => {
     updatePlayer(setGame, playerKeys[activePlayerIndex], { active: false });
     updatePlayer(setGame, playerKeys[nextPlayerIndex], { active: true });
     setDice(initialDiceState);
+    setMessage(initialMessageState);
   };
 
   return { nextPlayer };
+};
+
+export const useMessage = () => {
+  const [game, setGame] = useGame();
+
+  const setMessage = (newMessage) => {
+    setGame((prev) => ({ ...prev, message: newMessage }));
+  };
+
+  return [game.message, setMessage];
 };

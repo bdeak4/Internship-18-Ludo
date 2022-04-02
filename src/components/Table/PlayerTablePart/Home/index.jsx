@@ -23,8 +23,7 @@ const Home = ({ player }) => {
               <Token
                 player={player}
                 onClick={() => handleClick(i)}
-                clickable={playerData.active && dice !== initialDiceState}
-                // clickable={playerData.active && dice === 6}
+                clickable={playerData.active && dice === 6}
               />
             )}
           </TokenWrapper>

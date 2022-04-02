@@ -8,14 +8,23 @@ import {
   DiceThree,
   DiceTwo,
 } from "phosphor-react";
-import { useActivePlayer, useDice } from "providers/game/hooks";
-import { useState } from "react";
-import { getPlayerColor } from "utils/player";
+import {
+  useActivePlayer,
+  useDice,
+  useGame,
+  useMessage,
+  useNextPlayer,
+} from "providers/game/hooks";
+import { useState, useEffect } from "react";
+import { getPlayerColor, hasPossibleActions } from "utils/player";
 import { CursorWrapper, DiceRollerWrapper, DiceWrapper } from "./styled";
 
 const DiceRoller = () => {
   const [dice, setDice] = useDice();
+  const [game] = useGame();
+  const [, setMessage] = useMessage();
   const player = useActivePlayer();
+  const { nextPlayer } = useNextPlayer();
   const [isSpinning, setIsSpinning] = useState(false);
 
   const possibleDiceOutcomes = [
@@ -44,6 +53,19 @@ const DiceRoller = () => {
       setIsSpinning(false);
     }, 750);
   };
+
+  useEffect(() => {
+    if (dice === initialDiceState || hasPossibleActions(game, player)) {
+      return;
+    }
+
+    setMessage("No possible actions. Continuing in 3s");
+    setTimeout(() => {
+      nextPlayer();
+    }, 3000);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dice]);
 
   return (
     <DiceRollerWrapper>

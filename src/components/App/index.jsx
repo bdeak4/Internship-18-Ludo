@@ -5,6 +5,7 @@ import Table from "components/Table";
 import { random } from "../../utils/common";
 import { updatePlayer } from "../../utils/player";
 import ScoreBoard from "components/ScoreBoard";
+import Message from "components/Message";
 
 const App = () => {
   const [game, setGame] = useGame();
@@ -28,6 +29,7 @@ const App = () => {
     <>
       <Table />
       <ScoreBoard />
+      <Message />
       <pre>{JSON.stringify(game, null, 2)}</pre>
     </>
   ) : (

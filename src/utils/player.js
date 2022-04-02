@@ -1,4 +1,5 @@
-import { players } from "constants/players";
+import { parkingEndAbsoluteIndex } from "constants/cell";
+import { players, tokenHomePosition } from "constants/players";
 
 export const getPlayerColor = (player) => {
   switch (player) {
@@ -40,4 +41,18 @@ export const incrementTokenPosition = (setPlayer, tokenIndex, increment) => {
       position: token.position + (tokenIndex === i ? increment : 0),
     })),
   }));
+};
+
+export const hasPossibleActions = (game, player) => {
+  return game.players[player].tokens.some((t) => {
+    if (t.position === tokenHomePosition) {
+      return game.dice === 6;
+    }
+
+    if (t.position + game.dice <= parkingEndAbsoluteIndex) {
+      return true;
+    }
+
+    return false;
+  });
 };
