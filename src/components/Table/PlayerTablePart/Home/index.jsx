@@ -1,9 +1,12 @@
 import { useDice, useGame, usePlayer } from "providers/game/hooks";
+
 import Token from "components/Table/Token";
-import { HomeWrapper, TokensWrapper, TokenWrapper } from "./styled";
+
 import { movePlayer } from "utils/player";
 import { tokenHomePosition } from "constants/players";
 import { initialDiceState } from "constants/game";
+
+import { HomeWrapper, TokensWrapper, TokenWrapper } from "./styled";
 
 const Home = ({ player }) => {
   const [playerData] = usePlayer(player);

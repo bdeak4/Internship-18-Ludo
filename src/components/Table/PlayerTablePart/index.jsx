@@ -1,8 +1,10 @@
-import { customStyles } from "./customStyles";
-import { Cells, PlayerTablePartWrapper } from "./styled";
 import Cell from "./Cell";
 import Home from "./Home";
+
 import { isParkingCell, isSpawnCell } from "utils/cell";
+
+import { customStyles } from "./customStyles";
+import { Cells, PlayerTablePartWrapper } from "./styled";
 
 const PlayerTablePart = ({ player }) => {
   return (

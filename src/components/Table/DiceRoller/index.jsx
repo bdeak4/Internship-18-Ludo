@@ -1,4 +1,4 @@
-import { initialDiceState } from "constants/game";
+import { useState, useEffect } from "react";
 import {
   Cursor,
   DiceFive,
@@ -15,8 +15,10 @@ import {
   useMessage,
   useNextPlayer,
 } from "providers/game/hooks";
-import { useState, useEffect } from "react";
+
+import { initialDiceState } from "constants/game";
 import { getPlayerColor, hasPossibleActions } from "utils/player";
+
 import { CursorWrapper, DiceRollerWrapper, DiceWrapper } from "./styled";
 
 const DiceRoller = () => {

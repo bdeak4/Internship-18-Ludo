@@ -1,4 +1,5 @@
 import { useMessage } from "providers/game/hooks";
+
 import { MessageWrapper } from "./styled";
 
 const Message = () => {

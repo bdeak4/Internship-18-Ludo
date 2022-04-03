@@ -1,16 +1,17 @@
+import { useState, useEffect } from "react";
 import { useGame, useMessage } from "providers/game/hooks";
-import { getActivePlayers } from "utils/game";
+
 import Form from "components/Form";
 import Table from "components/Table";
-import { random } from "../../utils/common";
-import { updatePlayer } from "../../utils/player";
 import ScoreBoard from "components/ScoreBoard";
 import Message from "components/Message";
-import { useEffect } from "react";
+
+import { getActivePlayers } from "utils/game";
+import { random } from "utils/common";
+import { updatePlayer } from "utils/player";
 import { initialTokenState, players } from "constants/players";
 import { parkingStartAbsoluteIndex } from "constants/cell";
 import { initialMessageState } from "constants/game";
-import { useState } from "react";
 
 const App = () => {
   const [game, setGame] = useGame();
@@ -67,7 +68,6 @@ const App = () => {
       <Table />
       <ScoreBoard />
       <Message />
-      <pre>{JSON.stringify(game, null, 2)}</pre>
     </>
   ) : (
     <Form startGame={startGame} />

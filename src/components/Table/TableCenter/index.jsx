@@ -1,5 +1,7 @@
+import DiceRoller from "components/Table/DiceRoller";
+
 import { players } from "constants/players";
-import DiceRoller from "../DiceRoller";
+
 import {
   PlayerTableCenter,
   TableCenterWrapper,

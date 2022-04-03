@@ -1,8 +1,11 @@
 import React from "react";
-import { players } from "constants/players";
-import PlayerTablePart from "./PlayerTablePart";
-import { TableWrapper } from "./styled";
+
 import TableCenter from "./TableCenter";
+import PlayerTablePart from "./PlayerTablePart";
+
+import { players } from "constants/players";
+
+import { TableWrapper } from "./styled";
 
 const Table = () => {
   return (

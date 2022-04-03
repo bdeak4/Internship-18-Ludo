@@ -1,7 +1,9 @@
 import { useState } from "react";
+
 import { players } from "constants/players";
 import { getPlayerColor } from "utils/player";
 import { capitalize } from "utils/common";
+
 import {
   PlayerForm,
   PlayerFormFooter,

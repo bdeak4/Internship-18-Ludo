@@ -1,14 +1,17 @@
-import Token from "components/Table/Token";
-import { parkingEndAbsoluteIndex } from "constants/cell";
-import { initialDiceState } from "constants/game";
 import {
   useDice,
   useGame,
   useNextPlayer,
   usePlayer,
 } from "providers/game/hooks";
+
+import Token from "components/Table/Token";
+
+import { parkingEndAbsoluteIndex } from "constants/cell";
+import { initialDiceState } from "constants/game";
 import { getPlayerTokenByCell } from "utils/cell";
 import { movePlayer, getTextRotation } from "utils/player";
+
 import { CellWrapper } from "./styled";
 
 const Cell = ({ player, isParking, isSpawn, index }) => {

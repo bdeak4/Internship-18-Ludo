@@ -1,7 +1,8 @@
-import { initialDiceState, initialMessageState } from "constants/game";
 import { useContext } from "react";
-import { updatePlayer } from "utils/player";
 import { GameContext } from ".";
+
+import { initialDiceState, initialMessageState } from "constants/game";
+import { updatePlayer } from "utils/player";
 
 export const useGame = () => {
   const { game, setGame } = useContext(GameContext);

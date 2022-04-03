@@ -1,10 +1,6 @@
 import { parkingEndAbsoluteIndex, tokenPath } from "constants/cell";
 import { players, tokenHomePosition } from "constants/players";
-import {
-  getPlayerTablePartOffset,
-  getPlayerTokenByCell,
-  getTablePartByOffset,
-} from "./cell";
+import { getPlayerTokenByCell, getTablePartByOffset } from "./cell";
 
 export const getPlayerColor = (player) => {
   switch (player) {
