@@ -8,18 +8,18 @@ import {
   usePlayer,
 } from "providers/game/hooks";
 import { getPlayerTokenByCell } from "utils/cell";
-import { getTextRotation, incrementTokenPosition } from "utils/player";
+import { movePlayer, getTextRotation } from "utils/player";
 import { CellWrapper } from "./styled";
 
 const Cell = ({ player, isParking, isSpawn, index }) => {
-  const [game] = useGame();
+  const [game, setGame] = useGame();
   const [token, tokenIndex] = getPlayerTokenByCell(game, player, index);
-  const [playerData, setPlayerData] = usePlayer(token);
+  const [playerData] = usePlayer(token);
   const [dice, setDice] = useDice();
   const { nextPlayer } = useNextPlayer();
 
   const handleClick = () => {
-    incrementTokenPosition(setPlayerData, tokenIndex, dice);
+    movePlayer(setGame, game, token, tokenIndex, dice);
 
     if (dice !== 6) {
       nextPlayer();

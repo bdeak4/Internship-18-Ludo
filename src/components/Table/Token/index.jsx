@@ -6,7 +6,7 @@ const Token = ({
   clickable,
   hasMutedColor,
   tokenCount,
-  textRotation,
+  textRotation = 0,
 }) => {
   return (
     <TokenButton

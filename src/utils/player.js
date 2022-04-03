@@ -1,5 +1,10 @@
-import { parkingEndAbsoluteIndex } from "constants/cell";
+import { parkingEndAbsoluteIndex, tokenPath } from "constants/cell";
 import { players, tokenHomePosition } from "constants/players";
+import {
+  getPlayerTablePartOffset,
+  getPlayerTokenByCell,
+  getTablePartByOffset,
+} from "./cell";
 
 export const getPlayerColor = (player) => {
   switch (player) {
@@ -46,19 +51,9 @@ export const updatePlayer = (setGame, player, updatedProperties) => {
       ...prev.players,
       [player]: {
         ...prev.players[player],
-        ...updatedProperties,
+        ...updatedProperties(prev.players[player]),
       },
     },
-  }));
-};
-
-export const incrementTokenPosition = (setPlayer, tokenIndex, increment) => {
-  setPlayer((prev) => ({
-    ...prev,
-    tokens: prev.tokens.map((token, i) => ({
-      ...token,
-      position: token.position + (tokenIndex === i ? increment : 0),
-    })),
   }));
 };
 
@@ -74,4 +69,37 @@ export const hasPossibleActions = (game, player) => {
 
     return false;
   });
+};
+
+export const movePlayer = (
+  setGame,
+  game,
+  player,
+  tokenIndex,
+  increment = 0
+) => {
+  const position = game.players[player].tokens[tokenIndex].position + increment;
+  const [tablePartOffset, relativeIndex] = tokenPath[position];
+
+  const tablePart = getTablePartByOffset(player, tablePartOffset);
+
+  const [existingPlayer, existingTokenIndex] = getPlayerTokenByCell(
+    game,
+    tablePart,
+    relativeIndex
+  );
+
+  if (existingPlayer && existingPlayer !== player) {
+    updatePlayer(setGame, existingPlayer, (prev) => ({
+      tokens: prev.tokens.map(({ position }, i) => ({
+        position: i === existingTokenIndex ? -1 : position,
+      })),
+    }));
+  }
+
+  updatePlayer(setGame, player, (prev) => ({
+    tokens: prev.tokens.map(({ position }, i) => ({
+      position: i === tokenIndex ? position + increment : position,
+    })),
+  }));
 };

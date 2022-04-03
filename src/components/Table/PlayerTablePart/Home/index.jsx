@@ -1,16 +1,17 @@
-import { useDice, usePlayer } from "providers/game/hooks";
+import { useDice, useGame, usePlayer } from "providers/game/hooks";
 import Token from "components/Table/Token";
 import { HomeWrapper, TokensWrapper, TokenWrapper } from "./styled";
-import { incrementTokenPosition } from "utils/player";
+import { movePlayer } from "utils/player";
 import { tokenHomePosition } from "constants/players";
 import { initialDiceState } from "constants/game";
 
 const Home = ({ player }) => {
-  const [playerData, setPlayerData] = usePlayer(player);
+  const [playerData] = usePlayer(player);
   const [dice, setDice] = useDice();
+  const [game, setGame] = useGame();
 
-  const handleClick = (tokenIndex) => {
-    incrementTokenPosition(setPlayerData, tokenIndex, 1);
+  const handleClick = (player, tokenIndex) => {
+    movePlayer(setGame, game, player, tokenIndex, 1);
     setDice(initialDiceState);
   };
 
@@ -22,7 +23,7 @@ const Home = ({ player }) => {
             {token.position === tokenHomePosition && (
               <Token
                 player={player}
-                onClick={() => handleClick(i)}
+                onClick={() => handleClick(player, i)}
                 clickable={playerData.active && dice === 6}
               />
             )}

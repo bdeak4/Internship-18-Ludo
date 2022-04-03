@@ -62,8 +62,12 @@ export const useNextPlayer = () => {
     const nextPlayerIndex =
       playerValues.length - 1 > activePlayerIndex ? activePlayerIndex + 1 : 0;
 
-    updatePlayer(setGame, playerKeys[activePlayerIndex], { active: false });
-    updatePlayer(setGame, playerKeys[nextPlayerIndex], { active: true });
+    updatePlayer(setGame, playerKeys[activePlayerIndex], () => ({
+      active: false,
+    }));
+    updatePlayer(setGame, playerKeys[nextPlayerIndex], () => ({
+      active: true,
+    }));
     setDice(initialDiceState);
     setMessage(initialMessageState);
   };

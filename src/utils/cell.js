@@ -23,6 +23,16 @@ export const getPlayerTablePartOffset = (player, tablePart) => {
   return translatedPlayerList.indexOf(tablePart);
 };
 
+export const getTablePartByOffset = (player, tablePartOffset) => {
+  const playerList = [...Object.values(players), ...Object.values(players)];
+
+  const playerIndex = playerList.indexOf(player);
+
+  const translatedPlayerList = playerList.slice(playerIndex, playerIndex + 4);
+
+  return translatedPlayerList[tablePartOffset];
+};
+
 export const getPlayerTokenByCell = (game, tablePart, relativeIndex) => {
   for (let player of Object.values(players)) {
     const playerData = game.players[player];

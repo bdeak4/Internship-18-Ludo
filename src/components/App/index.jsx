@@ -21,27 +21,27 @@ const App = () => {
     const players = Object.keys(playerNames);
 
     players.forEach((player) => {
-      updatePlayer(setGame, player, {
+      updatePlayer(setGame, player, () => ({
         name: playerNames[player],
         disabled: false,
-      });
+      }));
     });
 
-    updatePlayer(setGame, random(players), {
+    updatePlayer(setGame, random(players), () => ({
       active: true,
-    });
+    }));
   };
 
   const winGame = (player) => {
     setMessage(`${game.players[player].name} won. Next round starting in 2s`);
 
-    updatePlayer(setGame, player, { score: game.players[player].score + 1 });
+    updatePlayer(setGame, player, (prev) => ({ score: prev.score + 1 }));
 
     setTimeout(() => {
       Object.keys(players).forEach((p) => {
-        updatePlayer(setGame, p, {
+        updatePlayer(setGame, p, () => ({
           tokens: initialTokenState,
-        });
+        }));
       });
 
       setMessage(initialMessageState);
