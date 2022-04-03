@@ -30,6 +30,11 @@ export const PlayerInput = styled.div`
   input:focus {
     outline: 2px solid rgba(0, 0, 0, 0.45);
   }
+
+  input::placeholder {
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.45);
+  }
 `;
 
 export const PlayerFormFooter = styled.div`

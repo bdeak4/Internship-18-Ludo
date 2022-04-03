@@ -7,12 +7,14 @@ export const players = Object.freeze({
 
 export const tokenHomePosition = -1;
 
+export const initialTokenState = Array(4).fill({
+  position: 49,
+});
+
 export const initialPlayerState = {
   name: "",
   score: 0,
   disabled: true,
   active: false,
-  tokens: Array(4).fill({
-    position: tokenHomePosition,
-  }),
+  tokens: initialTokenState,
 };
