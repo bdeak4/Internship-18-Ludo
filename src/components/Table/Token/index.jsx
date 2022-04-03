@@ -1,6 +1,13 @@
 import { TokenButton } from "./styled";
 
-const Token = ({ player, onClick, clickable, hasMutedColor }) => {
+const Token = ({
+  player,
+  onClick,
+  clickable,
+  hasMutedColor,
+  tokenCount,
+  textRotation,
+}) => {
   return (
     <TokenButton
       player={player}
@@ -8,7 +15,10 @@ const Token = ({ player, onClick, clickable, hasMutedColor }) => {
       clickable={clickable}
       disabled={!clickable}
       hasMutedColor={hasMutedColor}
-    ></TokenButton>
+      textRotation={textRotation}
+    >
+      {tokenCount > 1 && tokenCount}
+    </TokenButton>
   );
 };
 

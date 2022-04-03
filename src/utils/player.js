@@ -20,6 +20,25 @@ export const getPlayerColor = (player) => {
   }
 };
 
+export const getTextRotation = (player) => {
+  switch (player) {
+    case players.blue:
+      return 270;
+
+    case players.red:
+      return 180;
+
+    case players.green:
+      return 90;
+
+    case players.yellow:
+      return 0;
+
+    default:
+      return 0;
+  }
+};
+
 export const updatePlayer = (setGame, player, updatedProperties) => {
   setGame((prev) => ({
     ...prev,

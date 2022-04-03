@@ -7,6 +7,8 @@ export const TokenButton = styled.button`
   margin: 20%;
   background-color: ${({ player, hasMutedColor }) =>
     !hasMutedColor ? getPlayerColor(player) : "#ffffff80"};
+  color: #fff;
+  transform: rotate(${({ textRotation }) => textRotation}deg);
   border-radius: 100%;
   border: 0;
   cursor: ${({ clickable }) => (clickable ? "pointer" : "not-allowed")};

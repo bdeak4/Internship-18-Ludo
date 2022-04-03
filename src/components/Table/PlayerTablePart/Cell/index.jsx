@@ -8,7 +8,7 @@ import {
   usePlayer,
 } from "providers/game/hooks";
 import { getPlayerTokenByCell } from "utils/cell";
-import { incrementTokenPosition } from "utils/player";
+import { getTextRotation, incrementTokenPosition } from "utils/player";
 import { CellWrapper } from "./styled";
 
 const Cell = ({ player, isParking, isSpawn, index }) => {
@@ -42,6 +42,12 @@ const Cell = ({ player, isParking, isSpawn, index }) => {
           clickable={
             playerData.active && dice !== initialDiceState && !outOfBounds
           }
+          tokenCount={
+            playerData.tokens.filter(
+              (t) => t.position === playerData.tokens[tokenIndex].position
+            ).length
+          }
+          textRotation={getTextRotation(player)}
         />
       )}
     </CellWrapper>
