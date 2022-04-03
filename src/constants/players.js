@@ -8,7 +8,7 @@ export const players = Object.freeze({
 export const tokenHomePosition = -1;
 
 export const initialTokenState = Array(4).fill({
-  position: 49,
+  position: tokenHomePosition,
 });
 
 export const initialPlayerState = {
