@@ -44,3 +44,20 @@ export const PlayerName = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
+
+export const ResetButton = styled.button`
+  width: 100%;
+  font-size: 24px;
+  background-color: transparent;
+  border: 2px solid black;
+  cursor: pointer;
+  text-align: left;
+
+  @media screen and (max-width: 1200px) {
+    margin-right: 8px;
+  }
+
+  &:focus {
+    outline: 2px solid rgba(0, 0, 0, 0.45);
+  }
+`;

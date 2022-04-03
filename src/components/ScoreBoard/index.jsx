@@ -1,14 +1,26 @@
 import { parkingStartAbsoluteIndex } from "constants/cell";
+import { initialGameState } from "constants/game";
 import { players } from "constants/players";
 import { useGame } from "providers/game/hooks";
-import { PlayerName, ScoreBoardPlayer, ScoreBoardWrapper } from "./styled";
+import {
+  PlayerName,
+  ResetButton,
+  ScoreBoardPlayer,
+  ScoreBoardWrapper,
+} from "./styled";
 
 const ScoreBoard = () => {
-  const [game] = useGame();
+  const [game, setGame] = useGame();
 
   const playerList = Object.keys(players)
     .filter((p) => !game.players[p].disabled)
     .map((p) => ({ playerColor: p, player: game.players[p] }));
+
+  const handleReset = () => {
+    if (window.confirm("Are you sure?")) {
+      setGame(initialGameState);
+    }
+  };
 
   return (
     <ScoreBoardWrapper>
@@ -40,6 +52,7 @@ const ScoreBoard = () => {
           </ScoreBoardPlayer>
         );
       })}
+      <ResetButton onClick={handleReset}>Reset game</ResetButton>
     </ScoreBoardWrapper>
   );
 };

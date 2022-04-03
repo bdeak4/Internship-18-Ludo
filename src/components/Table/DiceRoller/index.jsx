@@ -59,10 +59,10 @@ const DiceRoller = () => {
       return;
     }
 
-    setMessage("No possible actions. Continuing in 3s");
+    setMessage("No possible actions. Continuing in 2s");
     setTimeout(() => {
       nextPlayer();
-    }, 3000);
+    }, 2000);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dice]);

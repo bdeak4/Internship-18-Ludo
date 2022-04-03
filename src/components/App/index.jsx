@@ -33,7 +33,7 @@ const App = () => {
   };
 
   const winGame = (player) => {
-    setMessage(`${game.players[player].name} won. Next round starting in 3s`);
+    setMessage(`${game.players[player].name} won. Next round starting in 2s`);
 
     updatePlayer(setGame, player, { score: game.players[player].score + 1 });
 
@@ -46,7 +46,7 @@ const App = () => {
 
       setMessage(initialMessageState);
       setWinLock(false);
-    }, 3000);
+    }, 2000);
   };
 
   useEffect(() => {
