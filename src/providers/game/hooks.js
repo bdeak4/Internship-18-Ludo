@@ -57,11 +57,22 @@ export const useNextPlayer = () => {
   const [, setMessage] = useMessage();
 
   const nextPlayer = () => {
+    const activePlayerIndex = Object.values(game.players).findIndex(
+      (p) => p.active
+    );
+    let nextPlayerIndex = Object.values(game.players)
+      .slice(activePlayerIndex + 1)
+      .findIndex((p) => !p.disabled);
+
+    if (nextPlayerIndex === -1) {
+      nextPlayerIndex = Object.values(game.players).findIndex(
+        (p) => !p.disabled
+      );
+    } else {
+      nextPlayerIndex += activePlayerIndex + 1;
+    }
+
     const playerKeys = Object.keys(game.players).filter((p) => !p.disabled);
-    const playerValues = Object.values(game.players).filter((p) => !p.disabled);
-    const activePlayerIndex = playerValues.findIndex((p) => p.active);
-    const nextPlayerIndex =
-      playerValues.length - 1 > activePlayerIndex ? activePlayerIndex + 1 : 0;
 
     updatePlayer(setGame, playerKeys[activePlayerIndex], () => ({
       active: false,

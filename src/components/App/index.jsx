@@ -20,7 +20,6 @@ const App = () => {
 
   const startGame = (playerNames) => {
     const players = Object.keys(playerNames);
-
     players.forEach((player) => {
       updatePlayer(setGame, player, () => ({
         name: playerNames[player],
